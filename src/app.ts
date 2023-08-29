@@ -1,4 +1,4 @@
-// Drag & Drop Interfaces
+
 interface Draggable {
   dragStartHandler(event: DragEvent): void;
   dragEndHandler(event: DragEvent): void;
@@ -10,7 +10,6 @@ interface DragTarget {
   dragLeaveHandler(event: DragEvent): void;
 }
 
-// Project Type
 enum ProjectStatus {
   Active,
   Finished
@@ -82,7 +81,6 @@ class ProjectState extends State<Project> {
 
 const projectState = ProjectState.getInstance();
 
-// Validation
 interface Validatable {
   value: string | number;
   required?: boolean;
@@ -126,7 +124,6 @@ function validate(validatableInput: Validatable) {
   return isValid;
 }
 
-// autobind decorator
 function autobind(_: any, _2: string, descriptor: PropertyDescriptor) {
   const originalMethod = descriptor.value;
   const adjDescriptor: PropertyDescriptor = {
@@ -139,7 +136,6 @@ function autobind(_: any, _2: string, descriptor: PropertyDescriptor) {
   return adjDescriptor;
 }
 
-// Component Base Class
 abstract class Component<T extends HTMLElement, U extends HTMLElement> {
   templateElement: HTMLTemplateElement;
   hostElement: T;
@@ -179,7 +175,6 @@ abstract class Component<T extends HTMLElement, U extends HTMLElement> {
   abstract renderContent(): void;
 }
 
-// ProjectItem Class
 class ProjectItem extends Component<HTMLUListElement, HTMLLIElement>
   implements Draggable {
   private project: Project;
@@ -222,7 +217,6 @@ class ProjectItem extends Component<HTMLUListElement, HTMLLIElement>
   }
 }
 
-// ProjectList Class
 class ProjectList extends Component<HTMLDivElement, HTMLElement>
   implements DragTarget {
   assignedProjects: Project[];
@@ -294,7 +288,6 @@ class ProjectList extends Component<HTMLDivElement, HTMLElement>
   }
 }
 
-// ProjectInput Class
 class ProjectInput extends Component<HTMLDivElement, HTMLFormElement> {
   titleInputElement: HTMLInputElement;
   descriptionInputElement: HTMLInputElement;
